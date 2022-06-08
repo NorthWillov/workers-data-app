@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+import AddWorkerBtn from "./components/AddWorkerBtn";
 import WorkersTable from "./components/WorkersTable";
 import { initialWorkers, IWorker } from "./constants";
 import "./styles/App.css";
@@ -22,6 +23,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <WorkersTable workers={workers} />
+      <AddWorkerBtn />
     </div>
   );
 };
