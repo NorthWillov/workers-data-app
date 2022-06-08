@@ -1,43 +1,38 @@
 import React, { FC } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
-interface NewWorkerFormProps {
+interface NewWorkerModalProps {
   isOpen: boolean;
   handleClose(): void;
 }
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "1px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-const NewWorkerForm: FC<NewWorkerFormProps> = ({ isOpen, handleClose }) => {
+const NewWorkerModal: FC<NewWorkerModalProps> = ({ isOpen, handleClose }) => {
   return (
-    <Modal
-      open={isOpen}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
-      </Box>
-    </Modal>
+    <Dialog open={isOpen} onClose={handleClose}>
+      <DialogTitle>Add New Worker!</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Email Address"
+          type="email"
+          fullWidth
+          variant="standard"
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}>Add</Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 
-export default NewWorkerForm;
+export default NewWorkerModal;
