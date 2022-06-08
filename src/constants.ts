@@ -1,5 +1,5 @@
 export interface IWorker {
-  id: number;
+  id?: number;
   name: string;
   surname: string;
   department: string;

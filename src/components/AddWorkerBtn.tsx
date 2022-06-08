@@ -1,7 +1,16 @@
 import React, { FC, useState } from "react";
 import NewWorkerModal from "./NewWorkerModal";
+import { IWorker } from "../constants";
 
-const AddWorkerBtn: FC = (props) => {
+interface AddWorkerBtnProps {
+  workers: IWorker[];
+  handleNewWorkerSubmit({}): void;
+}
+
+const AddWorkerBtn: FC<AddWorkerBtnProps> = ({
+  workers,
+  handleNewWorkerSubmit,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
@@ -10,7 +19,12 @@ const AddWorkerBtn: FC = (props) => {
   return (
     <div>
       <button onClick={handleOpen}>Add New Worker!</button>
-      <NewWorkerModal isOpen={isOpen} handleClose={handleClose} />
+      <NewWorkerModal
+        handleNewWorkerSubmit={handleNewWorkerSubmit}
+        isOpen={isOpen}
+        handleClose={handleClose}
+        workers={workers}
+      />
     </div>
   );
 };

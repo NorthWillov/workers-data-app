@@ -5,25 +5,34 @@ import { initialWorkers, IWorker } from "./constants";
 import "./styles/App.css";
 
 const App: FC = () => {
-  const [workers, setWorkers] = useState<IWorker[] | []>(
-    JSON.parse(window.localStorage.getItem("workers") || "[]")
-  );
+  const [workers, setWorkers] = useState<IWorker[]>([]);
 
   useEffect(() => {
-    getWorkers();
-    console.log("useEffect: ", workers);
-  }, [workers]);
-
-  const getWorkers = () => {
-    if (workers.length === 0) {
+    if (!window.localStorage.getItem("workers")) {
       window.localStorage.setItem("workers", JSON.stringify(initialWorkers));
     }
+
+    setWorkers(JSON.parse(window.localStorage.getItem("workers") || ""));
+  }, []);
+
+  const handleNewWorkerSubmit = (newWorker: IWorker) => {
+    // add id to new worker
+    const worker = { id: workers.length + 1, ...newWorker };
+
+    setWorkers([...workers, worker]);
+    window.localStorage.setItem(
+      "workers",
+      JSON.stringify([...workers, worker])
+    );
   };
 
   return (
     <div className="App">
       <WorkersTable workers={workers} />
-      <AddWorkerBtn />
+      <AddWorkerBtn
+        handleNewWorkerSubmit={handleNewWorkerSubmit}
+        workers={workers}
+      />
     </div>
   );
 };

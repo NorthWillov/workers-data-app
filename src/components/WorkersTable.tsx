@@ -8,6 +8,7 @@ interface WorkersTableProps {
 const WorkersTable: FC<WorkersTableProps> = ({ workers }) => {
   return (
     <div>
+      <h1>Workers</h1>
       {workers.map((worker) => (
         <div key={worker.id} style={{ display: "flex" }}>
           <p>{worker.id}</p>

@@ -5,19 +5,18 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { IWorker } from "../constants";
 
-const NewWorkerForm: FC = () => {
-  const [newWorker, setNewWorker] = useState({
-    name: "",
-    surname: "",
-    department: "",
-    salary: 0,
-    currency: "",
-  });
+interface NewWorkerFormProps {
+  newWorker: IWorker;
+  setNewWorker({}): void;
+}
 
+const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
   const handleChange = (e: SelectChangeEvent | any) => {
     setNewWorker({ ...newWorker, [e.target.name]: e.target.value });
   };
+
   return (
     <Box
       component="form"
@@ -60,18 +59,18 @@ const NewWorkerForm: FC = () => {
         onChange={handleChange}
         name="salary"
         id="standard-number"
-        label="Number"
+        label="Salary"
         type="number"
         variant="standard"
       />
       <FormControl fullWidth>
         <InputLabel id="currency-select">Currency</InputLabel>
         <Select
-          name="currency"
+          name="salaryCurrency"
           required
           labelId="currency-select"
           id="currency-select"
-          value={newWorker.currency}
+          value={newWorker.salaryCurrency}
           label="Department"
           onChange={handleChange}
         >
