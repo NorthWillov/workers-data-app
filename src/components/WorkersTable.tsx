@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { IWorker } from "../constants";
 
-interface IWorkersTable {
+interface WorkersTableProps {
   workers: IWorker[];
 }
 
-const WorkersTable: FC<IWorkersTable> = ({ workers }) => {
+const WorkersTable: FC<WorkersTableProps> = ({ workers }) => {
   return (
     <div>
       {workers.map((worker) => (
