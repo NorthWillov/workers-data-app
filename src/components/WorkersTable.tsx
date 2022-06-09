@@ -21,6 +21,30 @@ const WorkersTable: FC<WorkersTableProps> = ({ workers }) => {
           </p>
         </div>
       ))}
+      <p>
+        USD Summary:{" "}
+        {Math.round(
+          workers
+            .filter((worker) => worker.salaryCurrency === "USD")
+            .reduce((acc, el) => acc + Number(el.salary), 0)
+        )}
+      </p>
+      <p>
+        PLN Summary:{" "}
+        {Math.round(
+          workers
+            .filter((worker) => worker.salaryCurrency === "PLN")
+            .reduce((acc, el) => acc + Number(el.salary), 0)
+        )}
+      </p>
+      <p>
+        EUR Summary:{" "}
+        {Math.round(
+          workers
+            .filter((worker) => worker.salaryCurrency === "EUR")
+            .reduce((acc, el) => acc + Number(el.salary), 0)
+        )}
+      </p>
     </div>
   );
 };
