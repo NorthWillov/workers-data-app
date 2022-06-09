@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react";
+import Box from "@mui/material/Box";
 import NewWorkerModal from "./NewWorkerModal";
+import Button from "@mui/material/Button";
 import { IWorker } from "../constants";
 
 interface AddWorkerBtnProps {
@@ -17,15 +19,22 @@ const AddWorkerBtn: FC<AddWorkerBtnProps> = ({
   const handleClose = () => setIsOpen(false);
 
   return (
-    <div>
-      <button onClick={handleOpen}>Add New Worker!</button>
+    <Box sx={{ mb: 4 }}>
+      <Button
+        onClick={handleOpen}
+        color="success"
+        variant="contained"
+        size="large"
+      >
+        Click to Add New Worker!
+      </Button>
       <NewWorkerModal
         handleNewWorkerSubmit={handleNewWorkerSubmit}
         isOpen={isOpen}
         handleClose={handleClose}
         workers={workers}
       />
-    </div>
+    </Box>
   );
 };
 

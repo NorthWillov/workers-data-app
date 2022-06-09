@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -90,82 +91,103 @@ const SearchNav: FC<SearchNavProps> = ({ applyFilters, setWorkers }) => {
   };
 
   return (
-    <div>
+    <div className="search-nav">
       <h1>Search by:</h1>
-      <TextField
-        name="person"
-        id="outlined-basic"
-        label="Name or Surname"
-        value={filters.person}
-        variant="outlined"
-        onChange={handleChange}
-      />
-      <FormControl sx={{ width: "150px" }}>
-        <InputLabel id="department-select">Department</InputLabel>
-        <Select
-          name="department"
-          required
-          labelId="department-select"
-          value={filters.department}
-          id="department-select"
-          label="Department"
-          onChange={handleChange}
-        >
-          <MenuItem value="IT">IT</MenuItem>
-          <MenuItem value="Sales">Sales</MenuItem>
-          <MenuItem value="Administration">Administration</MenuItem>
-        </Select>
-      </FormControl>
-      <TextField
-        sx={{ width: "100px" }}
-        id="outlined-number"
-        label="From"
-        value={filters.from}
-        name="from"
-        type="number"
-        onChange={handleChange}
-      />
-      <TextField
-        sx={{ width: "100px" }}
-        id="outlined-number"
-        label="To"
-        value={filters.to}
-        name="to"
-        type="number"
-        onChange={handleChange}
-      />
-      <FormControl sx={{ width: "100px" }}>
-        <InputLabel id="currency-select">Currency</InputLabel>
-        <Select
-          name="salaryCurrency"
-          required
-          labelId="currency-select"
-          id="currency-select"
-          value={filters.salaryCurrency}
-          label="Currency"
-          onChange={handleChange}
-        >
-          <MenuItem value="USD">USD</MenuItem>
-          <MenuItem value="PLN">PLN</MenuItem>
-          <MenuItem value="EUR">EUR</MenuItem>
-        </Select>
-      </FormControl>
-      <Button
-        onClick={handleApply}
-        size="large"
-        variant="contained"
-        color="success"
+      <Box
+        component="form"
+        sx={{
+          m: 1,
+          width: "280px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+        autoComplete="off"
       >
-        Apply
-      </Button>
-      <Button
-        onClick={handleClear}
-        size="large"
-        variant="contained"
-        color="error"
-      >
-        Clear
-      </Button>
+        <TextField
+          name="person"
+          id="outlined-basic"
+          label="Name or Surname"
+          value={filters.person}
+          variant="outlined"
+          onChange={handleChange}
+        />
+        <FormControl sx={{ mt: 2 }}>
+          <InputLabel id="department-select">Department</InputLabel>
+          <Select
+            name="department"
+            required
+            labelId="department-select"
+            value={filters.department}
+            id="department-select"
+            label="Department"
+            onChange={handleChange}
+          >
+            <MenuItem value="IT">IT</MenuItem>
+            <MenuItem value="Sales">Sales</MenuItem>
+            <MenuItem value="Administration">Administration</MenuItem>
+          </Select>
+        </FormControl>
+        <InputLabel sx={{mt: 3, mb: 2}} id="outlined-number">Salary range:</InputLabel>
+        <Box sx={{ display: "flex", mb: 2 }}>
+          <TextField
+            id="outlined-number"
+            label="From"
+            value={filters.from}
+            name="from"
+            type="number"
+            onChange={handleChange}
+            sx={{ mr: 3 }}
+          />
+          <TextField
+            id="outlined-number"
+            label="To"
+            value={filters.to}
+            name="to"
+            type="number"
+            onChange={handleChange}
+          />
+        </Box>
+        <FormControl>
+          <InputLabel id="currency-select">Currency</InputLabel>
+          <Select
+            name="salaryCurrency"
+            required
+            labelId="currency-select"
+            id="currency-select"
+            value={filters.salaryCurrency}
+            label="Currency"
+            onChange={handleChange}
+          >
+            <MenuItem value="USD">USD</MenuItem>
+            <MenuItem value="PLN">PLN</MenuItem>
+            <MenuItem value="EUR">EUR</MenuItem>
+          </Select>
+        </FormControl>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            my: 2,
+          }}
+        >
+          <Button
+            onClick={handleApply}
+            size="large"
+            variant="contained"
+            color="success"
+          >
+            Apply
+          </Button>
+          <Button
+            onClick={handleClear}
+            size="large"
+            variant="contained"
+            color="error"
+          >
+            Clear
+          </Button>
+        </Box>
+      </Box>
     </div>
   );
 };

@@ -1,4 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import AddWorkerBtn from "./components/AddWorkerBtn";
 import SearchNav from "./components/SearchNav";
 import SummaryPerDepartment from "./components/SummaryPerDepartment";
@@ -35,13 +37,22 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <SearchNav setWorkers={setWorkers} applyFilters={applyFilters} />
-      <WorkersTable workers={workers} />
-      <AddWorkerBtn
-        handleNewWorkerSubmit={handleNewWorkerSubmit}
-        workers={workers}
-      />
-      <SummaryPerDepartment workers={workers} />
+      <div className="main">
+        <WorkersTable workers={workers} />
+        <div className="sidebar">
+          <SearchNav setWorkers={setWorkers} applyFilters={applyFilters} />
+          <Divider variant="middle" />
+          <Box sx={{ width: "280px", m: "auto" }}>
+            <h1>Additions:</h1>
+            <AddWorkerBtn
+              handleNewWorkerSubmit={handleNewWorkerSubmit}
+              workers={workers}
+            />
+            <Divider variant="middle" />
+            <SummaryPerDepartment workers={workers} />
+          </Box>
+        </div>
+      </div>
     </div>
   );
 };

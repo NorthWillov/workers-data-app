@@ -18,16 +18,18 @@ const SummaryPerDepartment: FC<SummaryPerDepartmentProps> = ({ workers }) => {
 
   return (
     <div>
-      <h5>Show summary per department:</h5>
-      <FormControl sx={{ width: "200px" }}>
-        <InputLabel id="department-select">Department</InputLabel>
+      <InputLabel sx={{ mt: 2, mb: 1 }} id="department-select">
+        Calculate summary per department:
+      </InputLabel>
+      <FormControl fullWidth>
+        <InputLabel id="department-select">Choose department</InputLabel>
         <Select
           name="department"
           required
           labelId="department-select"
           id="department-select"
           value={department}
-          label="Department"
+          label="Choose department"
           onChange={handleChange}
         >
           <MenuItem value="IT">IT</MenuItem>
