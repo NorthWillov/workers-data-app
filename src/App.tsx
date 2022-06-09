@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import AddWorkerBtn from "./components/AddWorkerBtn";
 import SearchNav from "./components/SearchNav";
+import SummaryPerDepartment from "./components/SummaryPerDepartment";
 import WorkersTable from "./components/WorkersTable";
 import { initialWorkers, IWorker } from "./constants";
 import "./styles/App.css";
@@ -40,6 +41,7 @@ const App: FC = () => {
         handleNewWorkerSubmit={handleNewWorkerSubmit}
         workers={workers}
       />
+      <SummaryPerDepartment workers={workers} />
     </div>
   );
 };
