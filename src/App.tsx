@@ -7,6 +7,7 @@ import "./styles/App.css";
 
 const App: FC = () => {
   const [workers, setWorkers] = useState<IWorker[]>([]);
+  console.log(workers);
 
   useEffect(() => {
     if (!window.localStorage.getItem("workers")) {
@@ -27,9 +28,13 @@ const App: FC = () => {
     );
   };
 
+  const applyFilters = (filteredWorkers: IWorker[]) => {
+    setWorkers(filteredWorkers);
+  };
+
   return (
     <div className="App">
-      <SearchNav />
+      <SearchNav setWorkers={setWorkers} applyFilters={applyFilters} />
       <WorkersTable workers={workers} />
       <AddWorkerBtn
         handleNewWorkerSubmit={handleNewWorkerSubmit}

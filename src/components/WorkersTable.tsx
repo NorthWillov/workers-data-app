@@ -9,6 +9,7 @@ const WorkersTable: FC<WorkersTableProps> = ({ workers }) => {
   return (
     <div>
       <h1>Workers</h1>
+      {workers.length === 0 && <h2>Workers weren't found!</h2>}
       {workers.map((worker) => (
         <div key={worker.id} style={{ display: "flex" }}>
           <p>{worker.id}</p>
