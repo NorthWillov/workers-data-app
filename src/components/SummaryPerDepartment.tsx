@@ -38,6 +38,7 @@ const SummaryPerDepartment: FC<SummaryPerDepartmentProps> = ({ workers }) => {
         </Select>
       </FormControl>
       <h4>
+        {/* Convert all currencies to USD, it's always better to use currencies API for that */}
         Summary:{" "}
         {workers
           .filter((worker) => worker.department === department)

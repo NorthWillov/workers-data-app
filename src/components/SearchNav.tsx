@@ -83,6 +83,7 @@ const SearchNav: FC<SearchNavProps> = ({ applyFilters, setWorkers }) => {
           ),
         workers
       );
+
       applyFilters(results);
     }
   };

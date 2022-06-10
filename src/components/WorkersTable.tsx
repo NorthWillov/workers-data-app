@@ -63,6 +63,7 @@ const WorkersTable: FC<WorkersTableProps> = ({ workers }) => {
             <TableCell align="right" colSpan={3}></TableCell>
             <StyledTableCell>Summary:</StyledTableCell>
             <StyledTableCell>
+              {/* Convert all currencies to USD, it's always better to use currencies API for that */}
               {workers.reduce((acc, el) => {
                 if (el.salaryCurrency === "PLN") {
                   return acc + Math.round(Number(el.salary / 4.34));

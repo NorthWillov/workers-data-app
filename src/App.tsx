@@ -10,9 +10,9 @@ import "./styles/App.css";
 
 const App: FC = () => {
   const [workers, setWorkers] = useState<IWorker[]>([]);
-  console.log(workers);
 
   useEffect(() => {
+    // Add initial workers to local storage
     if (!window.localStorage.getItem("workers")) {
       window.localStorage.setItem("workers", JSON.stringify(initialWorkers));
     }
@@ -39,6 +39,7 @@ const App: FC = () => {
     <div className="App">
       <div className="main">
         <WorkersTable workers={workers} />
+        {/* sidebar is encouraged to move as a separate component but because lack of logic I didn't */}
         <div className="sidebar">
           <SearchNav setWorkers={setWorkers} applyFilters={applyFilters} />
           <Divider variant="middle" />

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, ChangeEvent } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
@@ -18,7 +18,9 @@ const NewWorkerForm: FC<NewWorkerFormProps> = ({
   newWorker,
   isValidated,
 }) => {
-  const handleChange = (e: SelectChangeEvent | any) => {
+  const handleChange = (
+    e: SelectChangeEvent | ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setNewWorker({ ...newWorker, [e.target.name]: e.target.value });
   };
 

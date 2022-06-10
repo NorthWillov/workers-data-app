@@ -32,7 +32,6 @@ const AddWorkerBtn: FC<AddWorkerBtnProps> = ({
         handleNewWorkerSubmit={handleNewWorkerSubmit}
         isOpen={isOpen}
         handleClose={handleClose}
-        workers={workers}
       />
     </Box>
   );
