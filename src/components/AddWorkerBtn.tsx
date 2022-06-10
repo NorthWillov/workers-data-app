@@ -5,17 +5,20 @@ import Button from "@mui/material/Button";
 import { IWorker } from "../constants";
 
 interface AddWorkerBtnProps {
-  workers: IWorker[];
+  setWorkers(workers: IWorker[]): void;
   handleNewWorkerSubmit({}): void;
 }
 
 const AddWorkerBtn: FC<AddWorkerBtnProps> = ({
-  workers,
+  setWorkers,
   handleNewWorkerSubmit,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => setIsOpen(true);
+  const handleOpen = () => {
+    setWorkers(JSON.parse(window.localStorage.getItem("workers") || "[]"));
+    setIsOpen(true);
+  };
   const handleClose = () => setIsOpen(false);
 
   return (

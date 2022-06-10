@@ -47,7 +47,7 @@ const App: FC = () => {
             <h1>Additions:</h1>
             <AddWorkerBtn
               handleNewWorkerSubmit={handleNewWorkerSubmit}
-              workers={workers}
+              setWorkers={setWorkers}
             />
             <Divider variant="middle" />
             <SummaryPerDepartment workers={workers} />

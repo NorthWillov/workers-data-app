@@ -36,6 +36,7 @@ const NewWorkerModal: FC<NewWorkerModalProps> = ({
       handleNewWorkerSubmit(newWorker);
       handleClose();
       setNewWorker(initialNewWorker);
+      setIsValidated(false);
     }
   };
 
