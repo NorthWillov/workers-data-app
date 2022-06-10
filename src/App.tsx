@@ -17,7 +17,7 @@ const App: FC = () => {
       window.localStorage.setItem("workers", JSON.stringify(initialWorkers));
     }
 
-    setWorkers(JSON.parse(window.localStorage.getItem("workers") || ""));
+    setWorkers(JSON.parse(window.localStorage.getItem("workers") || "[]"));
   }, []);
 
   const handleNewWorkerSubmit = (newWorker: IWorker) => {

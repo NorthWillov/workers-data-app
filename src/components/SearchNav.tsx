@@ -22,9 +22,11 @@ interface SearchNavProps {
 }
 
 const SearchNav: FC<SearchNavProps> = ({ applyFilters, setWorkers }) => {
-  const workers: IWorker[] =
-    JSON.parse(window.localStorage.getItem("workers") || "") || [];
   const [filters, setFilters] = useState(initialFilter);
+
+  const workers: IWorker[] = JSON.parse(
+    window.localStorage.getItem("workers") || "[]"
+  );
 
   const handleChange = (e: SelectChangeEvent | any) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
@@ -127,7 +129,9 @@ const SearchNav: FC<SearchNavProps> = ({ applyFilters, setWorkers }) => {
             <MenuItem value="Administration">Administration</MenuItem>
           </Select>
         </FormControl>
-        <InputLabel sx={{mt: 3, mb: 2}} id="outlined-number">Salary range:</InputLabel>
+        <InputLabel sx={{ mt: 3, mb: 2 }} id="outlined-number">
+          Salary range:
+        </InputLabel>
         <Box sx={{ display: "flex", mb: 2 }}>
           <TextField
             id="outlined-number"
