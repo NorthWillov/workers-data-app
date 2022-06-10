@@ -10,9 +10,14 @@ import { IWorker } from "../constants";
 interface NewWorkerFormProps {
   newWorker: IWorker;
   setNewWorker({}): void;
+  isValidated: boolean;
 }
 
-const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
+const NewWorkerForm: FC<NewWorkerFormProps> = ({
+  setNewWorker,
+  newWorker,
+  isValidated,
+}) => {
   const handleChange = (e: SelectChangeEvent | any) => {
     setNewWorker({ ...newWorker, [e.target.name]: e.target.value });
   };
@@ -26,6 +31,7 @@ const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
       autoComplete="off"
     >
       <TextField
+        error={!newWorker.name && isValidated}
         onChange={handleChange}
         required
         label="Name"
@@ -33,6 +39,7 @@ const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
         variant="standard"
       />
       <TextField
+        error={!newWorker.surname && isValidated}
         onChange={handleChange}
         required
         label="Surname"
@@ -42,6 +49,7 @@ const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
       <FormControl fullWidth>
         <InputLabel id="department-select">Department</InputLabel>
         <Select
+          error={!newWorker.department && isValidated}
           name="department"
           required
           labelId="department-select"
@@ -57,6 +65,7 @@ const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
       </FormControl>
       <TextField
         onChange={handleChange}
+        error={!newWorker.salary && isValidated}
         name="salary"
         id="standard-number"
         label="Salary"
@@ -66,6 +75,7 @@ const NewWorkerForm: FC<NewWorkerFormProps> = ({ setNewWorker, newWorker }) => {
       <FormControl fullWidth>
         <InputLabel id="currency-select">Currency</InputLabel>
         <Select
+          error={!newWorker.salaryCurrency && isValidated}
           name="salaryCurrency"
           required
           labelId="currency-select"

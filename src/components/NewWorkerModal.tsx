@@ -29,18 +29,28 @@ const NewWorkerModal: FC<NewWorkerModalProps> = ({
   handleNewWorkerSubmit,
 }) => {
   const [newWorker, setNewWorker] = useState(initialNewWorker);
+  const [isValidated, setIsValidated] = useState(false);
 
   const handleSubmit = () => {
-    handleNewWorkerSubmit(newWorker);
-    handleClose();
-    setNewWorker(initialNewWorker);
+    setIsValidated(true);
+
+    // if valid proceed further
+    if (Object.values(newWorker).every((el) => el)) {
+      handleNewWorkerSubmit(newWorker);
+      handleClose();
+      setNewWorker(initialNewWorker);
+    }
   };
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>Add New Worker!</DialogTitle>
       <DialogContent sx={{ padding: "10px" }}>
-        <NewWorkerForm setNewWorker={setNewWorker} newWorker={newWorker} />
+        <NewWorkerForm
+          isValidated={isValidated}
+          setNewWorker={setNewWorker}
+          newWorker={newWorker}
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
