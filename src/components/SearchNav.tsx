@@ -94,7 +94,7 @@ const SearchNav: FC<SearchNavProps> = ({ applyFilters, setWorkers }) => {
   };
 
   return (
-    <div className="search-nav">
+    <div>
       <h1>Search by:</h1>
       <Box
         component="form"
