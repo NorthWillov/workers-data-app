@@ -40,12 +40,16 @@ const SummaryPerDepartment: FC<SummaryPerDepartmentProps> = ({ workers }) => {
       <h4>
         Summary:{" "}
         {workers
-          .filter(
-            (worker) =>
-              worker.department === department &&
-              worker.salaryCurrency === "USD"
-          )
-          .reduce((acc, el) => acc + Number(el.salary), 0)}{" "}
+          .filter((worker) => worker.department === department)
+          .reduce((acc, el) => {
+            if (el.salaryCurrency === "PLN") {
+              return acc + Math.round(Number(el.salary / 4.34));
+            }
+            if (el.salaryCurrency === "EUR") {
+              return acc + Math.round(Number(el.salary / 0.94));
+            }
+            return acc + Number(el.salary);
+          }, 0)}{" "}
         USD
       </h4>
     </div>
